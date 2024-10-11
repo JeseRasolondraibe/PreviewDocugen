@@ -1,0 +1,103 @@
+<template>
+    <!-- Si le contenu n'est pas prêt à être prévisualisé -->
+    <template if:false={isReadyToPreview}>
+        <div class="slds-grid slds-wrap">
+            <!-- Section avec les informations du devis -->
+            <div
+                class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_12-of-12">
+                <template if:true={quote}>
+                    <div class="slds-card">
+                        <div class="slds-card__body">
+                            <table
+                                class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Opportunity Name</th>
+                                        <td>{quote.SBQQ__Opportunity2__r.Name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Start Date</th>
+                                        <td>{quote.SBQQ__StartDate__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total Amount After
+                                            Discount</th>
+                                        <td>{quote.MontantTotalNetApresPrimes__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Payment Terms</th>
+                                        <td>{quote.Modalites_de_paiement__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Opportunity Name</th>
+                                        <td>{quote.SBQQ__Opportunity2__r.Name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Start Date</th>
+                                        <td>{quote.SBQQ__StartDate__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total Amount After
+                                            Discount</th>
+                                        <td>{quote.MontantTotalNetApresPrimes__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Payment Terms</th>
+                                        <td>{quote.Modalites_de_paiement__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Opportunity Name</th>
+                                        <td>{quote.SBQQ__Opportunity2__r.Name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Start Date</th>
+                                        <td>{quote.SBQQ__StartDate__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Total Amount After
+                                            Discount</th>
+                                        <td>{quote.MontantTotalNetApresPrimes__c}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Payment Terms</th>
+                                        <td>{quote.Modalites_de_paiement__c}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Bouton Preview centré -->
+            <template if:true={quote}>
+                <div
+                    class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_12-of-12 slds-text-align_center">
+                    <lightning-button onclick={launchPreview} label="Preview"
+                        data-id={quote.Id} style="margin-top: 20px;">
+                    </lightning-button>
+                    <template if:true={loading}>
+                        <div class="demo-only demo-only_viewport"
+                            style="height:6rem;position:relative">
+                            <div role="status"
+                                class="slds-spinner slds-spinner_medium">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                
+            </template>
+        </div>
+    </template>
+
+    <!-- Si le contenu est prêt à être prévisualisé -->
+    <template if:true={isReadyToPreview} for:each={filesList} for:item="file">
+        <p key={file.value} style="text-align: center;">
+            <iframe key={file.value} src={file.url}
+                style="height: 500px;width:100%;margin: auto;"></iframe>
+        </p>
+    </template>
+</template>
